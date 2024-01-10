@@ -83,23 +83,7 @@ Instructions:
 - The summary should not exceed 500 words.
 `
 
-  reviewFileDiff = `## GitHub PR Title
-
-\`$title\` 
-
-## Description
-
-\`\`\`
-$description
-\`\`\`
-
-## Summary of changes
-
-\`\`\`
-$short_summary
-\`\`\`
-
-## IMPORTANT Instructions
+  reviewFileDiff = `## IMPORTANT Instructions
 
 Input: New hunks annotated with line numbers and old hunks (replaced code). Hunks represent incomplete code fragments.
 Additional Context: PR title, description, summaries and comment chains.
@@ -115,61 +99,6 @@ For fixes, use \`diff\` code blocks, marking changes with \`+\` or \`-\`. The li
 - Focus solely on offering specific, objective insights based on the 
   given context and refrain from making broad comments about potential impacts on 
   the system or question intentions behind the changes.
-
-If there are no issues found on a line range, you MUST respond with the 
-text \`LGTM!\` for that line range in the review section. 
-
-## Example
-
-### Example changes
-
----new_hunk---
-\`\`\`
-  z = x / y
-    return z
-
-20: def add(x, y):
-21:     z = x + y
-22:     retrn z
-23: 
-24: def multiply(x, y):
-25:     return x * y
-
-def subtract(x, y):
-  z = x - y
-\`\`\`
-  
----old_hunk---
-\`\`\`
-  z = x / y
-    return z
-
-def add(x, y):
-    return x + y
-
-def subtract(x, y):
-    z = x - y
-\`\`\`
-
----comment_chains---
-\`\`\`
-Please review this change.
-\`\`\`
-
----end_change_section---
-
-### Example response
-
-22-22:
-There's a syntax error in the add function.
-\`\`\`diff
--    retrn z
-+    return z
-\`\`\`
----
-24-25:
-LGTM!
----
 
 ## Changes made to \`$filename\` for your review
 
